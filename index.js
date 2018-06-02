@@ -1,9 +1,13 @@
 import { view } from './lib';
 
+class RootController {
+  constructor() {
+    this.username = 'bob';
+  }
 
-const Hello = function () {
-  return view.createElement('div', null, 'Hello World');
+  index() {
+    return view.createElement('div', null, 'Hello World');
+  }
 }
 
-const helloWorld = view.createElement(Hello, null, null);
-view.render(helloWorld, document.getElementById('root'));
+view.mount(RootController, document.getElementById('root'));

@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    "external-helpers",
+    "transform-decorators-legacy",
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "view.createElement"
+      }
+    ],
+    "transform-class-properties"
+  ]
+}

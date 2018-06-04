@@ -1,13 +1,35 @@
-import { view } from './lib';
+import { view, Controller, Application } from './lib';
 
-class RootController {
+class RootController extends Controller {
+  count = 0;
+
   constructor() {
-    this.username = 'bob';
+    super();
+
+    this.onClick = this.onClick.bind(this);
   }
 
+  onClick(e) {
+    e.preventDefault();
+    this.count++;
+    this.index();
+  }
+
+  @view.render
   index() {
-    return view.createElement('div', null, 'Hello World');
+    return (
+      <div>
+        <button onclick={this.onClick}>Click Me</button>
+        {this.counter()}
+      </div>
+    );
+  }
+
+  counter() {
+    return <div>current count is {this.count}</div>;
   }
 }
 
-view.mount(RootController, document.getElementById('root'));
+const app = new Application();
+
+app.addController(RootController, 'root', document.getElementById('root'));

@@ -12,6 +12,7 @@
     "react/jsx-filename-extension": "off",
     "react/no-unknown-property": "off",
     "func-names": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-restricted-syntax": "off"
   }
 }

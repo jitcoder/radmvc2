@@ -1,35 +1,49 @@
-import { view, Controller, Application } from './lib';
+import { Controller, Application } from './lib';
+import view, { render } from './lib/view'; // eslint-disable-line
 
-class RootController extends Controller {
-  count = 0;
+class TodoController extends Controller {
+  items = [];
+  itemValue = ''; 
 
   constructor() {
     super();
 
-    this.onClick = this.onClick.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onAddClick = this.onAddClick.bind(this);
   }
 
-  onClick(e) {
+  onInputChange(e) {
+    this.itemValue = e.target.value;
+  }
+
+  onAddClick(e) {
     e.preventDefault();
-    this.count++;
+    this.items.push(this.itemValue);
     this.index();
   }
 
-  @view.render
+  @render
   index() {
     return (
       <div>
-        <button onclick={this.onClick}>Click Me</button>
-        {this.counter()}
+        <input type="text" onchange={this.onInputChange} placeholder="Enter item here" value={this.itemValue} />
+        <button onclick={this.onAddClick}>Add</button>
+        <br />
+        {this.todos()}
       </div>
     );
   }
 
-  counter() {
-    return <div>current count is {this.count}</div>;
+  todos() {
+    const results = [];
+    for (const item of this.items) {
+      results.push(<li>{item}</li>);
+    }
+
+    return <ul>{results}</ul>;
   }
 }
 
 const app = new Application();
 
-app.addController(RootController, 'root', document.getElementById('root'));
+app.addController(TodoController, 'root', document.getElementById('root'));

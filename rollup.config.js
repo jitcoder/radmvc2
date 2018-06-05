@@ -1,5 +1,5 @@
-import localResolve from 'rollup-plugin-local-resolve';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss';
 import babel from 'rollup-plugin-babel';
 
 export default {
@@ -14,5 +14,6 @@ export default {
       exclude: 'node_modules/**',
     }),
     nodeResolve({ jsnext: true }),
+    postcss({ plugins: [] }),
   ],
 };

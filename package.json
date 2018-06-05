@@ -33,9 +33,11 @@
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-local-resolve": "^1.0.7",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-postcss": "^1.6.2"
   },
   "dependencies": {
-    "petit-dom": "^0.2.0"
+    "petit-dom": "^0.2.0",
+    "todomvc-app-css": "^2.1.2"
   }
 }

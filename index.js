@@ -1,49 +1,38 @@
+import 'todomvc-app-css/index.css';
+
 import { Controller, Application } from './lib';
 import view, { render } from './lib/view'; // eslint-disable-line
 
 class TodoController extends Controller {
-  items = [];
-  itemValue = ''; 
 
-  constructor() {
-    super();
+  onKeyDown(e) {
+    if (e.keyCode !== 13) {
+      return;
+    }
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onAddClick = this.onAddClick.bind(this);
-  }
+    event.preventDefault();
 
-  onInputChange(e) {
-    this.itemValue = e.target.value;
-  }
-
-  onAddClick(e) {
-    e.preventDefault();
-    this.items.push(this.itemValue);
-    this.index();
   }
 
   @render
   index() {
     return (
       <div>
-        <input type="text" onchange={this.onInputChange} placeholder="Enter item here" value={this.itemValue} />
-        <button onclick={this.onAddClick}>Add</button>
-        <br />
-        {this.todos()}
+        <header className="header">
+          <h1>todos</h1>
+          <input
+            class="new-todo"
+            placeholder="What needs to be done?"
+            value={this.newTodo}
+            onkeydown={this.handleNewTodoKeyDown}
+            onchange={this.handleChange}
+          />
+        </header>
       </div>
     );
-  }
-
-  todos() {
-    const results = [];
-    for (const item of this.items) {
-      results.push(<li>{item}</li>);
-    }
-
-    return <ul>{results}</ul>;
   }
 }
 
 const app = new Application();
 
-app.addController(TodoController, 'root', document.getElementById('root'));
+app.addController(TodoController, 'root', document.getElementsByClassName('todoapp')[0]);

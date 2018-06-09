@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
+    "build:dev": "rollup -c -w",
     "babel": "babel index.js"
   },
   "keywords": [],
@@ -37,7 +38,6 @@
     "rollup-plugin-postcss": "^1.6.2"
   },
   "dependencies": {
-    "petit-dom": "^0.2.0",
     "todomvc-app-css": "^2.1.2"
   }
 }

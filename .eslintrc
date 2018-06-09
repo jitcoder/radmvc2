@@ -7,10 +7,11 @@
   "extends": "airbnb",
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "spaced-comment": "off",
-    "no-plusplus": "off",
+    "react/jsx-wrap-multilines":"off",
     "react/jsx-filename-extension": "off",
     "react/no-unknown-property": "off",
+    "spaced-comment": "off",
+    "no-plusplus": "off",
     "func-names": "off",
     "no-underscore-dangle": "off",
     "no-restricted-syntax": "off"

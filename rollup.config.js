@@ -16,4 +16,7 @@ export default {
     nodeResolve({ jsnext: true }),
     postcss({ plugins: [] }),
   ],
+  watch: {
+    exclude: ['node_modules/**'],
+  },
 };

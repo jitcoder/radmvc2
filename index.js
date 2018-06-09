@@ -34,15 +34,13 @@ class TodoController extends Controller {
   todoItems() {
     const items = [];
     for (let i = 0; i < this.todos.length; i++) {
-      items.push(
-        <li class="">
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>{this.todos[i]}</label>
-            <button class="destroy"></button>
-          </div>
-        </li>
-      )
+      items.push(<li class="">
+        <div class="view">
+          <input class="toggle" type="checkbox" />
+          <label>{this.todos[i]}</label>
+          <button class="destroy" />
+        </div>
+      </li>, );
     }
 
     return (
@@ -55,19 +53,18 @@ class TodoController extends Controller {
   main() {
     if (!this.todos.length) {
       return null;
-    } else {
-      return <section class="main">
-        <input
-          id="toggle-all"
-          class="toggle-all"
-          type="checkbox"
-          onchange={this.toggleAll}
-          checked={this.todos.length === 0}
-        />
-        <label htmlfor="toggle-all" />
-        {this.todoItems()}
-      </section>;
     }
+    return <section class="main">
+      <input
+        id="toggle-all"
+        class="toggle-all"
+        type="checkbox"
+        onchange={this.toggleAll}
+        checked={this.todos.length === 0}
+      />
+      <label htmlFor="toggle-all" />
+      {this.todoItems()}
+    </section>;
   }
 
   @render
@@ -84,6 +81,7 @@ class TodoController extends Controller {
             onchange={this.onChange}
           />
         </header>
+        <div>extra</div>
         {this.main()}
       </view>
     );
